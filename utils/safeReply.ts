@@ -5,9 +5,10 @@ export async function safeReply(interaction: CommandInteraction | ButtonInteract
     if (interaction.deferred || interaction.replied) {
       await interaction.followUp(content);
     } else {
-      await interaction.reply(content);
+      await interaction.reply({content, ephemeral: true});
     }
   } catch (error) {
     console.error(error);
   }
+  
 }
